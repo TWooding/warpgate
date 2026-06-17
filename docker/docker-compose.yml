@@ -5,7 +5,25 @@ services:
       - 2222:2222
       - 8888:8888
       - 33306:33306
+      # - 55432:55432
+      # - 8443:8443
     volumes:
       - ./data:/data
     stdin_open: true
     tty: true
+    environment:
+      # REQUIRED: Set a password for the initial admin user.
+      # On first run, the container will auto-generate the config using this password.
+      - WARPGATE_ADMIN_PASSWORD=changeme
+
+      # Protocol ports (set any of these to enable the corresponding protocol):
+      - WARPGATE_SSH_PORT=2222
+      - WARPGATE_MYSQL_PORT=33306
+      # - WARPGATE_POSTGRES_PORT=55432
+      # - WARPGATE_KUBERNETES_PORT=8443
+
+      # Optional settings:
+      # - WARPGATE_EXTERNAL_HOST=warpgate.example.com
+      # - WARPGATE_DATABASE_URL=sqlite:/data/db
+      # - WARPGATE_HTTP_PORT=8888
+      # - WARPGATE_RECORD_SESSIONS=true

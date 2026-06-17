@@ -44,6 +44,8 @@ EOF
 RUN adduser warpgate --disabled-password --gecos "" --uid ${USER_ID} --home /data --shell /usr/sbin/nologin
 
 COPY --from=build /opt/warpgate/target/release/warpgate /usr/local/bin/warpgate
+COPY docker/entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 VOLUME /data
 
@@ -53,5 +55,5 @@ HEALTHCHECK CMD warpgate healthcheck
 
 ENV DOCKER=1
 USER warpgate
-ENTRYPOINT ["warpgate"]
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["run"]

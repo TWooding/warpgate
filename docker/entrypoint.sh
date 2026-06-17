@@ -1,14 +1,14 @@
 #!/bin/bash
 set -e
 
-CONFIG="${WARPGATE_CONFIG:-/data/warpgate.yaml}"
+CONFIG_PATH="${WARPGATE_CONFIG:-/data/warpgate.yaml}"
 
 # If config already exists, skip setup and just run
-if [ -f "$CONFIG" ]; then
+if [ -f "$CONFIG_PATH" ]; then
     exec warpgate "$@"
 fi
 
-echo "==> No config found at $CONFIG"
+echo "==> No config found at $CONFIG_PATH"
 echo "==> Running first-time unattended setup..."
 
 # Build the unattended-setup command

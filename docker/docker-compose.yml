@@ -16,7 +16,7 @@ services:
       # On first run, the container will auto-generate the config using this password.
       - WARPGATE_ADMIN_PASSWORD=changeme
 
-      # Protocol ports (Uncomment the ones you want to enable and adjust the ports as needed):
+      # Protocols (Uncomment the ones you want to enable and adjust the ports as needed):
       - WARPGATE_SSH_PORT=2222 
       # - WARPGATE_MYSQL_PORT=33306
       # - WARPGATE_POSTGRES_PORT=55432

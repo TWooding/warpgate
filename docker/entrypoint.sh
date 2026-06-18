@@ -16,7 +16,6 @@ ARGS=(
     "unattended-setup"
     "--data-path" "/data"
     "--http-port" "${WARPGATE_HTTP_PORT:-8888}"
-    "--ssh-port" "${WARPGATE_SSH_PORT:-2222}"
 )
 
 # Enable session recording only if explicitly set to "true"
@@ -24,7 +23,8 @@ if [ "${WARPGATE_RECORD_SESSIONS}" = "true" ]; then
     ARGS+=(--record-sessions)
 fi
 
-# Optional Protocol ports
+# Optional Protocols
+[ -n "$WARPGATE_SSH_PORT" ]        && ARGS+=(--ssh-port "$WARPGATE_SSH_PORT")
 [ -n "$WARPGATE_MYSQL_PORT" ]      && ARGS+=(--mysql-port "$WARPGATE_MYSQL_PORT")
 [ -n "$WARPGATE_POSTGRES_PORT" ]   && ARGS+=(--postgres-port "$WARPGATE_POSTGRES_PORT")
 [ -n "$WARPGATE_KUBERNETES_PORT" ] && ARGS+=(--kubernetes-port "$WARPGATE_KUBERNETES_PORT")

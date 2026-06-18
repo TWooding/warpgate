@@ -4,7 +4,7 @@ services:
     ports:
       - 2222:2222
       - 8888:8888
-      - 33306:33306
+      # - 33306:33306
       # - 55432:55432
       # - 8443:8443
     volumes:
@@ -16,9 +16,9 @@ services:
       # On first run, the container will auto-generate the config using this password.
       - WARPGATE_ADMIN_PASSWORD=changeme
 
-      # Protocol ports (set any of these to enable the corresponding protocol):
-      - WARPGATE_SSH_PORT=2222
-      - WARPGATE_MYSQL_PORT=33306
+      # Protocol ports (Uncomment the ones you want to enable and adjust the ports as needed):
+      - WARPGATE_SSH_PORT=2222 
+      # - WARPGATE_MYSQL_PORT=33306
       # - WARPGATE_POSTGRES_PORT=55432
       # - WARPGATE_KUBERNETES_PORT=8443
 

@@ -12,8 +12,9 @@ services:
     stdin_open: true
     tty: true
     environment:
-      # REQUIRED: Set a password for the initial admin user.
-      # On first run, the container will auto-generate the config using this password for the initial admin user.
+      # REQUIRED: On first run, the container will auto-generate the 
+      #           config using this password for the initial admin user.
+      #           Change this to a strong password before deploying in production! 
       - WARPGATE_ADMIN_PASSWORD=changeme
 
       # Protocols (Uncomment the ones you want to enable and adjust the ports as needed):
